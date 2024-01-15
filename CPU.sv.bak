@@ -1,0 +1,40 @@
+module CPU(
+	input logic clk,
+	input logic reset
+	input logic stall
+);
+
+ //PC wires
+  wire [63:0] pc_in;
+  wire [63:0] pc_out;
+  
+  // adders
+  wire [63:0] adderout1;
+  wire [63:0] adderout2;
+  
+  // inst mem wire
+  wire [31:0] instruction;
+  wire[31:0] inst_ifid_out;
+  
+ program_counter pc 
+  (
+    .PC_in(pc_in),
+    .stall(stall),
+    .clk(clk),
+    .reset(reset),
+    .PC_out(pc_out)
+  );
+  
+  instruction_memory im
+  (
+    .inst_address(pc_out),
+    .instruction(instruction)
+  );
+  
+  
+  adder adder1
+  (
+    .p(pc_out),
+    .q(64'd4),
+    .out(adderout1)
+  );

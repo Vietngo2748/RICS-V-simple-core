@@ -1,0 +1,1177 @@
+Analysis & Synthesis report for CPU
+Mon Jan 15 13:12:42 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. User-Specified and Inferred Latches
+ 10. Logic Cells Representing Combinational Loops
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Registers Packed Into Inferred Megafunctions
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for registerFile:regfile|altsyncram:registers_rtl_0|altsyncram_c6j1:auto_generated
+ 17. Source assignments for registerFile:regfile|altsyncram:registers_rtl_1|altsyncram_c6j1:auto_generated
+ 18. Parameter Settings for User Entity Instance: data_memory:datamem
+ 19. Parameter Settings for Inferred Entity Instance: registerFile:regfile|altsyncram:registers_rtl_0
+ 20. Parameter Settings for Inferred Entity Instance: registerFile:regfile|altsyncram:registers_rtl_1
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "data_memory:datamem"
+ 23. Port Connectivity Checks: "EXMEM:i3"
+ 24. Port Connectivity Checks: "adder:adder2"
+ 25. Port Connectivity Checks: "registerFile:regfile"
+ 26. Port Connectivity Checks: "Parser:ip"
+ 27. Port Connectivity Checks: "adder:adder1"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+ 31. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Jan 15 13:12:42 2024       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; CPU                                         ;
+; Top-level Entity Name           ; CPU                                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 1586                                        ;
+; Total pins                      ; 482                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 4,032                                       ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; CPU                ; CPU                ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; program_counter.sv               ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/program_counter.sv                             ;         ;
+; instruction_memory.sv            ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/instruction_memory.sv                          ;         ;
+; adder.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/adder.sv                                       ;         ;
+; CPU.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/CPU.sv                                         ;         ;
+; twox1Mux.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/twox1Mux.sv                                    ;         ;
+; IFID.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/IFID.sv                                        ;         ;
+; Parser.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/Parser.sv                                      ;         ;
+; registerFile.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/registerFile.sv                                ;         ;
+; data_extractor.sv                ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv                              ;         ;
+; CU.sv                            ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/CU.sv                                          ;         ;
+; IDEX.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/IDEX.sv                                        ;         ;
+; Alu64.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/Alu64.sv                                       ;         ;
+; alu_control.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/alu_control.sv                                 ;         ;
+; ThreebyOneMux.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/ThreebyOneMux.sv                               ;         ;
+; EXMEM.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/EXMEM.sv                                       ;         ;
+; data_memory.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv                                 ;         ;
+; MEMWB.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/MEMWB.sv                                       ;         ;
+; branching_unit.sv                ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/branching_unit.sv                              ;         ;
+; ForwardingUnit.sv                ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/ForwardingUnit.sv                              ;         ;
+; hazard_detection_unit.sv         ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/hazard_detection_unit.sv                       ;         ;
+; pipeline_flush.sv                ; yes             ; User SystemVerilog HDL File  ; C:/intelFPGA_lite/18.1/RISC_V/pipeline_flush.sv                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_c6j1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/RISC_V/db/altsyncram_c6j1.tdf                         ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 2275      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 2762      ;
+;     -- 7 input functions                    ; 37        ;
+;     -- 6 input functions                    ; 1674      ;
+;     -- 5 input functions                    ; 416       ;
+;     -- 4 input functions                    ; 116       ;
+;     -- <=3 input functions                  ; 519       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 1586      ;
+;                                             ;           ;
+; I/O pins                                    ; 482       ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 4032      ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1712      ;
+; Total fan-out                               ; 22627     ;
+; Average fan-out                             ; 4.16      ;
++---------------------------------------------+-----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                             ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name           ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+-----------------------+--------------+
+; |CPU                                      ; 2762 (2)            ; 1586 (0)                  ; 4032              ; 0          ; 482  ; 0            ; |CPU                                                                                ; CPU                   ; work         ;
+;    |Alu64:alu|                            ; 65 (65)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|Alu64:alu                                                                      ; Alu64                 ; work         ;
+;    |CU:cu|                                ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|CU:cu                                                                          ; CU                    ; work         ;
+;    |EXMEM:i3|                             ; 64 (64)             ; 202 (202)                 ; 0                 ; 0          ; 0    ; 0            ; |CPU|EXMEM:i3                                                                       ; EXMEM                 ; work         ;
+;    |ForwardingUnit:f1|                    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|ForwardingUnit:f1                                                              ; ForwardingUnit        ; work         ;
+;    |IDEX:i2|                              ; 10 (10)             ; 229 (229)                 ; 0                 ; 0          ; 0    ; 0            ; |CPU|IDEX:i2                                                                        ; IDEX                  ; work         ;
+;    |IFID:i1|                              ; 12 (12)             ; 96 (96)                   ; 0                 ; 0          ; 0    ; 0            ; |CPU|IFID:i1                                                                        ; IFID                  ; work         ;
+;    |MEMWB:i4|                             ; 0 (0)               ; 135 (135)                 ; 0                 ; 0          ; 0    ; 0            ; |CPU|MEMWB:i4                                                                       ; MEMWB                 ; work         ;
+;    |ThreebyOneMux:m1|                     ; 71 (71)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|ThreebyOneMux:m1                                                               ; ThreebyOneMux         ; work         ;
+;    |ThreebyOneMux:m2|                     ; 70 (70)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|ThreebyOneMux:m2                                                               ; ThreebyOneMux         ; work         ;
+;    |adder:adder1|                         ; 62 (62)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|adder:adder1                                                                   ; adder                 ; work         ;
+;    |adder:adder2|                         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|adder:adder2                                                                   ; adder                 ; work         ;
+;    |alu_control:ac|                       ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|alu_control:ac                                                                 ; alu_control           ; work         ;
+;    |branching_unit:branc|                 ; 152 (152)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|branching_unit:branc                                                           ; branching_unit        ; work         ;
+;    |data_extractor:immextr|               ; 24 (24)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|data_extractor:immextr                                                         ; data_extractor        ; work         ;
+;    |data_memory:datamem|                  ; 1841 (1841)         ; 512 (512)                 ; 0                 ; 0          ; 0    ; 0            ; |CPU|data_memory:datamem                                                            ; data_memory           ; work         ;
+;    |hazard_detection_unit:hu|             ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|hazard_detection_unit:hu                                                       ; hazard_detection_unit ; work         ;
+;    |instruction_memory:im|                ; 101 (101)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|instruction_memory:im                                                          ; instruction_memory    ; work         ;
+;    |program_counter:pc|                   ; 1 (1)               ; 64 (64)                   ; 0                 ; 0          ; 0    ; 0            ; |CPU|program_counter:pc                                                             ; program_counter       ; work         ;
+;    |registerFile:regfile|                 ; 76 (76)             ; 348 (348)                 ; 4032              ; 0          ; 0    ; 0            ; |CPU|registerFile:regfile                                                           ; registerFile          ; work         ;
+;       |altsyncram:registers_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 2016              ; 0          ; 0    ; 0            ; |CPU|registerFile:regfile|altsyncram:registers_rtl_0                                ; altsyncram            ; work         ;
+;          |altsyncram_c6j1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 2016              ; 0          ; 0    ; 0            ; |CPU|registerFile:regfile|altsyncram:registers_rtl_0|altsyncram_c6j1:auto_generated ; altsyncram_c6j1       ; work         ;
+;       |altsyncram:registers_rtl_1|        ; 0 (0)               ; 0 (0)                     ; 2016              ; 0          ; 0    ; 0            ; |CPU|registerFile:regfile|altsyncram:registers_rtl_1                                ; altsyncram            ; work         ;
+;          |altsyncram_c6j1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 2016              ; 0          ; 0    ; 0            ; |CPU|registerFile:regfile|altsyncram:registers_rtl_1|altsyncram_c6j1:auto_generated ; altsyncram_c6j1       ; work         ;
+;    |twox1Mux:mux1|                        ; 72 (72)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|twox1Mux:mux1                                                                  ; twox1Mux              ; work         ;
+;    |twox1Mux:mux3|                        ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|twox1Mux:mux3                                                                  ; twox1Mux              ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                              ;
++-------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                      ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; registerFile:regfile|altsyncram:registers_rtl_0|altsyncram_c6j1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 63           ; 32           ; 63           ; 2016 ; None ;
+; registerFile:regfile|altsyncram:registers_rtl_1|altsyncram_c6j1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 63           ; 32           ; 63           ; 2016 ; None ;
++-------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                         ;
++-----------------------------------------------------+------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal          ; Free of Timing Hazards ;
++-----------------------------------------------------+------------------------------+------------------------+
+; data_memory:datamem|read_data[0]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[1]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[2]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[3]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[4]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[5]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[6]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[7]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[8]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[9]                    ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[10]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[11]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[12]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[13]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[14]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[15]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[16]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[17]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[18]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[19]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[20]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[21]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[22]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[23]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[24]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[25]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[26]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[27]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[28]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[29]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[30]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[31]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[32]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[33]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[34]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[35]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[36]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[37]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[38]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[39]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[40]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[41]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[42]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[43]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[44]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[45]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[46]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[47]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[48]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[49]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[50]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[51]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[52]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[53]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[54]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[55]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[56]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[57]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[58]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[59]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[60]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[61]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[62]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_memory:datamem|read_data[63]                   ; EXMEM:i3|Memread             ; yes                    ;
+; data_extractor:immextr|imm_data[0]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[1]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[2]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[3]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[4]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[5]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[6]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[7]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[8]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[9]                  ; data_extractor:immextr|Mux11 ; yes                    ;
+; data_extractor:immextr|imm_data[10]                 ; data_extractor:immextr|Mux11 ; yes                    ;
+; Number of user-specified and inferred latches = 75  ;                              ;                        ;
++-----------------------------------------------------+------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops               ;
++--------------------------------------------------------+---+
+; Logic Cell Name                                        ;   ;
++--------------------------------------------------------+---+
+; data_extractor:immextr|imm_data[11]                    ;   ;
+; Number of logic cells representing combinational loops ; 1 ;
++--------------------------------------------------------+---+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                        ;
++----------------------------------------+----------------------------------+
+; Register name                          ; Reason for Removal               ;
++----------------------------------------+----------------------------------+
+; IDEX:i2|Memtoreg                       ; Merged with IDEX:i2|Memread      ;
+; IDEX:i2|imm_data[12..63]               ; Merged with IDEX:i2|imm_data[11] ;
+; IDEX:i2|aluop[0]                       ; Merged with IDEX:i2|Branch       ;
+; EXMEM:i3|Memtoreg                      ; Merged with EXMEM:i3|Memread     ;
+; Total Number of Removed Registers = 55 ;                                  ;
++----------------------------------------+----------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1586  ;
+; Number of registers using Synchronous Clear  ; 646   ;
+; Number of registers using Synchronous Load   ; 480   ;
+; Number of registers using Asynchronous Clear ; 64    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 984   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; data_memory:datamem|mem[0][0]           ; 2       ;
+; data_memory:datamem|mem[32][0]          ; 2       ;
+; data_memory:datamem|mem[16][0]          ; 2       ;
+; data_memory:datamem|mem[48][0]          ; 2       ;
+; data_memory:datamem|mem[16][1]          ; 2       ;
+; data_memory:datamem|mem[48][1]          ; 2       ;
+; data_memory:datamem|mem[8][1]           ; 2       ;
+; data_memory:datamem|mem[40][1]          ; 1       ;
+; data_memory:datamem|mem[32][2]          ; 2       ;
+; data_memory:datamem|mem[48][2]          ; 2       ;
+; data_memory:datamem|mem[40][2]          ; 1       ;
+; data_memory:datamem|mem[24][2]          ; 2       ;
+; data_memory:datamem|mem[56][3]          ; 2       ;
+; registerFile:regfile|registers[11][3]   ; 3       ;
+; Total number of inverted registers = 14 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                       ;
++----------------------------------------------------------------------+--------------------------------------+------+
+; Register Name                                                        ; Megafunction                         ; Type ;
++----------------------------------------------------------------------+--------------------------------------+------+
+; registerFile:regfile|registers[0..7,9..17,21..25,28..31][0..2,4..63] ; registerFile:regfile|registers_rtl_1 ; RAM  ;
+; registerFile:regfile|registers[18][1,2,4..63]                        ; registerFile:regfile|registers_rtl_1 ; RAM  ;
++----------------------------------------------------------------------+--------------------------------------+------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |CPU|IDEX:i2|aluop[1]               ;
+; 3:1                ; 126 bits  ; 252 LEs       ; 0 LEs                ; 252 LEs                ; Yes        ; |CPU|IDEX:i2|readdata2[49]          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[1][0]  ;
+; 3:1                ; 86 bits   ; 172 LEs       ; 0 LEs                ; 172 LEs                ; Yes        ; |CPU|IFID:i1|inst[12]               ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[2][4]  ;
+; 9:1                ; 64 bits   ; 384 LEs       ; 128 LEs              ; 256 LEs                ; Yes        ; |CPU|EXMEM:i3|result_out_alu[1]     ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[3][5]  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[4][4]  ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[5][6]  ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[6][0]  ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[63][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[62][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[61][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[60][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[59][6] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[58][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[57][2] ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 35 LEs               ; 7 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[56][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[55][0] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[54][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[53][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[52][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[51][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[50][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[49][7] ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 25 LEs               ; 5 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[48][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[47][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[46][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[45][2] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[44][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[43][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[42][0] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[41][4] ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[40][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[39][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[38][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[37][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[36][0] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[35][7] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[34][0] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[33][3] ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[32][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[31][0] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[30][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[29][6] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[28][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[27][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[26][2] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[25][6] ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 35 LEs               ; 7 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[24][1] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[23][5] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[22][6] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[21][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[20][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[19][2] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[18][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[17][7] ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[16][2] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[15][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[14][6] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[13][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[12][4] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[11][3] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[10][6] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[9][4]  ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 35 LEs               ; 7 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[8][6]  ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |CPU|data_memory:datamem|mem[7][3]  ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 15 LEs               ; 3 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[48][1] ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[40][1] ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[32][0] ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |CPU|data_memory:datamem|mem[16][0] ;
+; 4:1                ; 120 bits  ; 240 LEs       ; 240 LEs              ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux63      ;
+; 4:1                ; 48 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux53      ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |CPU|data_extractor:immextr|Mux6    ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |CPU|data_extractor:immextr|Mux0    ;
+; 4:1                ; 64 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |CPU|ThreebyOneMux:m2|Mux46         ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux60      ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|alu_control:ac|Mux1            ;
+; 4:1                ; 64 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |CPU|ThreebyOneMux:m1|Mux40         ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |CPU|IFID:i1|inst                   ;
+; 7:1                ; 24 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux58      ;
+; 7:1                ; 24 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux61      ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux0       ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |CPU|data_memory:datamem|Mux62      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Source assignments for registerFile:regfile|altsyncram:registers_rtl_0|altsyncram_c6j1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; Assignment                      ; Value              ; From ; To                                      ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                       ;
++---------------------------------+--------------------+------+-----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Source assignments for registerFile:regfile|altsyncram:registers_rtl_1|altsyncram_c6j1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; Assignment                      ; Value              ; From ; To                                      ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                       ;
++---------------------------------+--------------------+------+-----------------------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: data_memory:datamem ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; DATA_WIDTH     ; 64    ; Signed Integer                          ;
+; ADDRESS_WIDTH  ; 6     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: registerFile:regfile|altsyncram:registers_rtl_0 ;
++------------------------------------+----------------------+--------------------------------------+
+; Parameter Name                     ; Value                ; Type                                 ;
++------------------------------------+----------------------+--------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                              ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                       ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                              ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                              ;
+; WIDTH_A                            ; 63                   ; Untyped                              ;
+; WIDTHAD_A                          ; 5                    ; Untyped                              ;
+; NUMWORDS_A                         ; 32                   ; Untyped                              ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                              ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                              ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WIDTH_B                            ; 63                   ; Untyped                              ;
+; WIDTHAD_B                          ; 5                    ; Untyped                              ;
+; NUMWORDS_B                         ; 32                   ; Untyped                              ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                              ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                              ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                              ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                              ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                              ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                              ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                              ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                              ;
+; BYTE_SIZE                          ; 8                    ; Untyped                              ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; INIT_FILE                          ; UNUSED               ; Untyped                              ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                              ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                              ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                              ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                              ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                              ;
+; CBXI_PARAMETER                     ; altsyncram_c6j1      ; Untyped                              ;
++------------------------------------+----------------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: registerFile:regfile|altsyncram:registers_rtl_1 ;
++------------------------------------+----------------------+--------------------------------------+
+; Parameter Name                     ; Value                ; Type                                 ;
++------------------------------------+----------------------+--------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                              ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                       ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                              ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                              ;
+; WIDTH_A                            ; 63                   ; Untyped                              ;
+; WIDTHAD_A                          ; 5                    ; Untyped                              ;
+; NUMWORDS_A                         ; 32                   ; Untyped                              ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                              ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                              ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WIDTH_B                            ; 63                   ; Untyped                              ;
+; WIDTHAD_B                          ; 5                    ; Untyped                              ;
+; NUMWORDS_B                         ; 32                   ; Untyped                              ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                              ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                              ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                              ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                              ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                              ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                              ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                              ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                              ;
+; BYTE_SIZE                          ; 8                    ; Untyped                              ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; INIT_FILE                          ; UNUSED               ; Untyped                              ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                              ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                              ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                              ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                              ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                              ;
+; CBXI_PARAMETER                     ; altsyncram_c6j1      ; Untyped                              ;
++------------------------------------+----------------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                            ;
++-------------------------------------------+-------------------------------------------------+
+; Name                                      ; Value                                           ;
++-------------------------------------------+-------------------------------------------------+
+; Number of entity instances                ; 2                                               ;
+; Entity Instance                           ; registerFile:regfile|altsyncram:registers_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                       ;
+;     -- WIDTH_A                            ; 63                                              ;
+;     -- NUMWORDS_A                         ; 32                                              ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                    ;
+;     -- WIDTH_B                            ; 63                                              ;
+;     -- NUMWORDS_B                         ; 32                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                          ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                    ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                            ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                       ;
+; Entity Instance                           ; registerFile:regfile|altsyncram:registers_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                       ;
+;     -- WIDTH_A                            ; 63                                              ;
+;     -- NUMWORDS_A                         ; 32                                              ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                    ;
+;     -- WIDTH_B                            ; 63                                              ;
+;     -- NUMWORDS_B                         ; 32                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                          ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                    ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                            ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                       ;
++-------------------------------------------+-------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "data_memory:datamem"                                                                                                                                                                   ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                                                            ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; address  ; Input  ; Warning  ; Input port expression (64 bits) is wider than the input port (6 bits) it drives.  The 58 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; element1 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element1[63..1]" have no fanouts                                                      ;
+; element1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element2 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element2[63..1]" have no fanouts                                                      ;
+; element2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element3 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element3[63..1]" have no fanouts                                                      ;
+; element3 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element4 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element4[63..1]" have no fanouts                                                      ;
+; element4 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element5 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element5[63..1]" have no fanouts                                                      ;
+; element5 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element6 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element6[63..1]" have no fanouts                                                      ;
+; element6 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element7 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element7[63..1]" have no fanouts                                                      ;
+; element7 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; element8 ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "element8[63..1]" have no fanouts                                                      ;
+; element8 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "EXMEM:i3"                                                                           ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; zero ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "adder:adder2" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; q[0] ; Input ; Info     ; Stuck at GND   ;
++------+-------+----------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "registerFile:regfile"                                                                                                    ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                  ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; r18  ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (1 bits) it drives; bit(s) "r18[63..1]" have no fanouts ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Parser:ip"                                                                            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; funct3 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; funct7 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "adder:adder1"   ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; q[63..3] ; Input ; Info     ; Stuck at GND ;
+; q[1..0]  ; Input ; Info     ; Stuck at GND ;
+; q[2]     ; Input ; Info     ; Stuck at VCC ;
++----------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1586                        ;
+;     ENA               ; 418                         ;
+;     ENA CLR           ; 2                           ;
+;     ENA CLR SLD       ; 62                          ;
+;     ENA SCLR          ; 86                          ;
+;     ENA SLD           ; 416                         ;
+;     SCLR              ; 558                         ;
+;     SCLR SLD          ; 2                           ;
+;     plain             ; 42                          ;
+; arriav_lcell_comb     ; 2762                        ;
+;     arith             ; 190                         ;
+;         1 data inputs ; 62                          ;
+;         2 data inputs ; 63                          ;
+;         3 data inputs ; 1                           ;
+;         5 data inputs ; 64                          ;
+;     extend            ; 37                          ;
+;         7 data inputs ; 37                          ;
+;     normal            ; 2535                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 135                         ;
+;         3 data inputs ; 256                         ;
+;         4 data inputs ; 116                         ;
+;         5 data inputs ; 352                         ;
+;         6 data inputs ; 1674                        ;
+; boundary_port         ; 482                         ;
+; stratixv_ram_block    ; 126                         ;
+;                       ;                             ;
+; Max LUT depth         ; 12.00                       ;
+; Average LUT depth     ; 4.34                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Mon Jan 15 13:12:24 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file program_counter.sv
+    Info (12023): Found entity 1: program_counter File: C:/intelFPGA_lite/18.1/RISC_V/program_counter.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file instruction_memory.sv
+    Info (12023): Found entity 1: instruction_memory File: C:/intelFPGA_lite/18.1/RISC_V/instruction_memory.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file adder.sv
+    Info (12023): Found entity 1: adder File: C:/intelFPGA_lite/18.1/RISC_V/adder.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cpu.sv
+    Info (12023): Found entity 1: CPU File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file twox1mux.sv
+    Info (12023): Found entity 1: twox1Mux File: C:/intelFPGA_lite/18.1/RISC_V/twox1Mux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ifid.sv
+    Info (12023): Found entity 1: IFID File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file parser.sv
+    Info (12023): Found entity 1: Parser File: C:/intelFPGA_lite/18.1/RISC_V/Parser.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file registerfile.sv
+    Info (12023): Found entity 1: registerFile File: C:/intelFPGA_lite/18.1/RISC_V/registerFile.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file data_extractor.sv
+    Info (12023): Found entity 1: data_extractor File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cu.sv
+    Info (12023): Found entity 1: CU File: C:/intelFPGA_lite/18.1/RISC_V/CU.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file idex.sv
+    Info (12023): Found entity 1: IDEX File: C:/intelFPGA_lite/18.1/RISC_V/IDEX.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu64.sv
+    Info (12023): Found entity 1: Alu64 File: C:/intelFPGA_lite/18.1/RISC_V/Alu64.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu_control.sv
+    Info (12023): Found entity 1: alu_control File: C:/intelFPGA_lite/18.1/RISC_V/alu_control.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file threebyonemux.sv
+    Info (12023): Found entity 1: ThreebyOneMux File: C:/intelFPGA_lite/18.1/RISC_V/ThreebyOneMux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file exmem.sv
+    Info (12023): Found entity 1: EXMEM File: C:/intelFPGA_lite/18.1/RISC_V/EXMEM.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file data_memory.sv
+    Info (12023): Found entity 1: data_memory File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file memwb.sv
+    Info (12023): Found entity 1: MEMWB File: C:/intelFPGA_lite/18.1/RISC_V/MEMWB.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file branching_unit.sv
+    Info (12023): Found entity 1: branching_unit File: C:/intelFPGA_lite/18.1/RISC_V/branching_unit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file forwardingunit.sv
+    Info (12023): Found entity 1: ForwardingUnit File: C:/intelFPGA_lite/18.1/RISC_V/ForwardingUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hazard_detection_unit.sv
+    Info (12023): Found entity 1: hazard_detection_unit File: C:/intelFPGA_lite/18.1/RISC_V/hazard_detection_unit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pipeline_flush.sv
+    Info (12023): Found entity 1: pipeline_flush File: C:/intelFPGA_lite/18.1/RISC_V/pipeline_flush.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(104): created implicit net for "flush" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 104
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(112): created implicit net for "stall" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 112
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(185): created implicit net for "r18" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 185
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(278): created implicit net for "element1" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 278
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(279): created implicit net for "element2" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 279
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(280): created implicit net for "element3" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 280
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(281): created implicit net for "element4" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 281
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(282): created implicit net for "element5" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 282
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(283): created implicit net for "element6" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 283
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(284): created implicit net for "element7" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 284
+Warning (10236): Verilog HDL Implicit Net warning at CPU.sv(285): created implicit net for "element8" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 285
+Info (12127): Elaborating entity "CPU" for the top level hierarchy
+Info (12128): Elaborating entity "pipeline_flush" for hierarchy "pipeline_flush:p_flush" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 105
+Info (12128): Elaborating entity "hazard_detection_unit" for hierarchy "hazard_detection_unit:hu" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 113
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:pc" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 122
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:im" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 128
+Info (12128): Elaborating entity "adder" for hierarchy "adder:adder1" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 136
+Info (12128): Elaborating entity "twox1Mux" for hierarchy "twox1Mux:mux2" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 141
+Info (12128): Elaborating entity "IFID" for hierarchy "IFID:i1" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 153
+Info (12128): Elaborating entity "Parser" for hierarchy "Parser:ip" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 164
+Info (12128): Elaborating entity "data_extractor" for hierarchy "data_extractor:immextr" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 170
+Warning (10270): Verilog HDL Case Statement warning at data_extractor.sv(7): incomplete case statement has no default case item File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Warning (10240): Verilog HDL Always Construct warning at data_extractor.sv(7): inferring latch(es) for variable "imm_data", which holds its previous value in one or more paths through the always construct File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[0]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[1]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[2]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[3]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[4]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[5]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[6]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[7]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[8]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[9]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (10041): Inferred latch for "imm_data[10]" at data_extractor.sv(7) File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+Info (12128): Elaborating entity "registerFile" for hierarchy "registerFile:regfile" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 190
+Info (12128): Elaborating entity "CU" for hierarchy "CU:cu" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 203
+Info (12128): Elaborating entity "IDEX" for hierarchy "IDEX:i2" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 221
+Info (12128): Elaborating entity "ThreebyOneMux" for hierarchy "ThreebyOneMux:m1" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 233
+Info (12128): Elaborating entity "Alu64" for hierarchy "Alu64:alu" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 252
+Warning (10230): Verilog HDL assignment warning at Alu64.sv(18): truncated value with size 32 to match size of target (1) File: C:/intelFPGA_lite/18.1/RISC_V/Alu64.sv Line: 18
+Info (12128): Elaborating entity "alu_control" for hierarchy "alu_control:ac" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 259
+Info (12128): Elaborating entity "EXMEM" for hierarchy "EXMEM:i3" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 268
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:datamem" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 286
+Warning (10240): Verilog HDL Always Construct warning at data_memory.sv(44): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[0]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[1]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[2]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[3]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[4]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[5]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[6]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[7]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[8]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[9]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[10]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[11]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[12]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[13]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[14]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[15]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[16]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[17]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[18]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[19]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[20]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[21]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[22]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[23]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[24]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[25]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[26]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[27]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[28]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[29]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[30]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[31]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[32]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[33]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[34]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[35]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[36]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[37]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[38]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[39]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[40]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[41]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[42]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[43]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[44]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[45]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[46]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[47]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[48]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[49]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[50]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[51]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[52]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[53]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[54]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[55]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[56]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[57]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[58]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[59]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[60]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[61]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[62]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (10041): Inferred latch for "read_data[63]" at data_memory.sv(44) File: C:/intelFPGA_lite/18.1/RISC_V/data_memory.sv Line: 44
+Info (12128): Elaborating entity "MEMWB" for hierarchy "MEMWB:i4" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 295
+Info (12128): Elaborating entity "branching_unit" for hierarchy "branching_unit:branc" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 305
+Info (12128): Elaborating entity "ForwardingUnit" for hierarchy "ForwardingUnit:f1" File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 313
+Warning (276027): Inferred dual-clock RAM node "registerFile:regfile|registers_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "registerFile:regfile|registers_rtl_1" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "registerFile:regfile|registers_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 63
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 63
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "registerFile:regfile|registers_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 63
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 63
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+Info (12130): Elaborated megafunction instantiation "registerFile:regfile|altsyncram:registers_rtl_0"
+Info (12133): Instantiated megafunction "registerFile:regfile|altsyncram:registers_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "63"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "63"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_c6j1.tdf
+    Info (12023): Found entity 1: altsyncram_c6j1 File: C:/intelFPGA_lite/18.1/RISC_V/db/altsyncram_c6j1.tdf Line: 27
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch data_extractor:immextr|imm_data[0] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[1] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[2] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[3] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[4] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[5] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[6] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[7] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[8] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[9] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13012): Latch data_extractor:immextr|imm_data[10] has unsafe behavior File: C:/intelFPGA_lite/18.1/RISC_V/data_extractor.sv Line: 7
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IFID:i1|inst[6] File: C:/intelFPGA_lite/18.1/RISC_V/IFID.sv Line: 12
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "reg18[1]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[2]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[3]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[4]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[5]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[6]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[7]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[8]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[9]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[10]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[11]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[12]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[13]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[14]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[15]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[16]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[17]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[18]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[19]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[20]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[21]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[22]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[23]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[24]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[25]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[26]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[27]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[28]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[29]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[30]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[31]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[32]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[33]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[34]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[35]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[36]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[37]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[38]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[39]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[40]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[41]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[42]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[43]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[44]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[45]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[46]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[47]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[48]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[49]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[50]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[51]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[52]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[53]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[54]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[55]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[56]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[57]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[58]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[59]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[60]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[61]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[62]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+    Warning (13410): Pin "reg18[63]" is stuck at GND File: C:/intelFPGA_lite/18.1/RISC_V/CPU.sv Line: 6
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/intelFPGA_lite/18.1/RISC_V/output_files/CPU.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 4231 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 480 output pins
+    Info (21061): Implemented 3623 logic cells
+    Info (21064): Implemented 126 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 105 warnings
+    Info: Peak virtual memory: 4874 megabytes
+    Info: Processing ended: Mon Jan 15 13:12:42 2024
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:11
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/intelFPGA_lite/18.1/RISC_V/output_files/CPU.map.smsg.
+
+

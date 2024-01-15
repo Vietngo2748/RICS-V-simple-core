@@ -1,0 +1,37 @@
+module instruction_memory (
+  input logic [63:0] inst_address,
+  output logic [31:0] instruction
+);
+
+  logic [7:0] inst_mem[87:0];
+
+  initial begin
+    inst_mem[3]  = 32'h00000913; // 1
+    inst_mem[7]  = 32'h00000433; // 2
+    inst_mem[11] = 32'h04b40863; // 3
+    inst_mem[15] = 32'h00800eb3; // 4
+    inst_mem[19] = 32'h000409b3; // 5
+    inst_mem[23] = 32'h013989b3; // 6
+    inst_mem[27] = 32'h013989b3; // 7
+    inst_mem[31] = 32'h013989b3; // 8
+    inst_mem[35] = 32'h02be8663; // 9
+    inst_mem[39] = 32'h001e8e93; // 10
+    inst_mem[43] = 32'h00898993; // 11
+    inst_mem[47] = 32'h00093d03; // 12
+    inst_mem[51] = 32'h0009bd83; // 13
+    inst_mem[55] = 32'h01bd4463; // 14
+    inst_mem[59] = 32'hfe0004e3; // 15
+    inst_mem[63] = 32'h01a002b3; // 16
+    inst_mem[67] = 32'h01b93023; // 17
+    inst_mem[71] = 32'h0059b023; // 18
+    inst_mem[75] = 32'hfc000ce3; // 19
+    inst_mem[79] = 32'h00140413; // 20
+    inst_mem[83] = 32'h00890913; // 21
+    inst_mem[87] = 32'hfa000ae3; // 22
+  end
+
+  always_comb begin
+    instruction = {inst_mem[inst_address + 3], inst_mem[inst_address + 2], inst_mem[inst_address + 1], inst_mem[inst_address]};
+  end
+
+endmodule

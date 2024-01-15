@@ -1,0 +1,385 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "01/13/2024 15:01:42"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          CPU
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module CPU_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg [63:0] diachi;
+reg reset;
+// wires                                               
+wire [31:0] lenh;
+
+// assign statements (if any)                          
+CPU i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.diachi(diachi),
+	.lenh(lenh),
+	.reset(reset)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #50000 1'b1;
+	#50000;
+end 
+// diachi[ 63 ]
+initial
+begin
+	diachi[63] = 1'b0;
+end 
+// diachi[ 62 ]
+initial
+begin
+	diachi[62] = 1'b0;
+end 
+// diachi[ 61 ]
+initial
+begin
+	diachi[61] = 1'b0;
+end 
+// diachi[ 60 ]
+initial
+begin
+	diachi[60] = 1'b0;
+end 
+// diachi[ 59 ]
+initial
+begin
+	diachi[59] = 1'b0;
+end 
+// diachi[ 58 ]
+initial
+begin
+	diachi[58] = 1'b0;
+end 
+// diachi[ 57 ]
+initial
+begin
+	diachi[57] = 1'b0;
+end 
+// diachi[ 56 ]
+initial
+begin
+	diachi[56] = 1'b0;
+end 
+// diachi[ 55 ]
+initial
+begin
+	diachi[55] = 1'b0;
+end 
+// diachi[ 54 ]
+initial
+begin
+	diachi[54] = 1'b0;
+end 
+// diachi[ 53 ]
+initial
+begin
+	diachi[53] = 1'b0;
+end 
+// diachi[ 52 ]
+initial
+begin
+	diachi[52] = 1'b0;
+end 
+// diachi[ 51 ]
+initial
+begin
+	diachi[51] = 1'b0;
+end 
+// diachi[ 50 ]
+initial
+begin
+	diachi[50] = 1'b0;
+end 
+// diachi[ 49 ]
+initial
+begin
+	diachi[49] = 1'b0;
+end 
+// diachi[ 48 ]
+initial
+begin
+	diachi[48] = 1'b0;
+end 
+// diachi[ 47 ]
+initial
+begin
+	diachi[47] = 1'b0;
+end 
+// diachi[ 46 ]
+initial
+begin
+	diachi[46] = 1'b0;
+end 
+// diachi[ 45 ]
+initial
+begin
+	diachi[45] = 1'b0;
+end 
+// diachi[ 44 ]
+initial
+begin
+	diachi[44] = 1'b0;
+end 
+// diachi[ 43 ]
+initial
+begin
+	diachi[43] = 1'b0;
+end 
+// diachi[ 42 ]
+initial
+begin
+	diachi[42] = 1'b0;
+end 
+// diachi[ 41 ]
+initial
+begin
+	diachi[41] = 1'b0;
+end 
+// diachi[ 40 ]
+initial
+begin
+	diachi[40] = 1'b0;
+end 
+// diachi[ 39 ]
+initial
+begin
+	diachi[39] = 1'b0;
+end 
+// diachi[ 38 ]
+initial
+begin
+	diachi[38] = 1'b0;
+end 
+// diachi[ 37 ]
+initial
+begin
+	diachi[37] = 1'b0;
+end 
+// diachi[ 36 ]
+initial
+begin
+	diachi[36] = 1'b0;
+end 
+// diachi[ 35 ]
+initial
+begin
+	diachi[35] = 1'b0;
+end 
+// diachi[ 34 ]
+initial
+begin
+	diachi[34] = 1'b0;
+end 
+// diachi[ 33 ]
+initial
+begin
+	diachi[33] = 1'b0;
+end 
+// diachi[ 32 ]
+initial
+begin
+	diachi[32] = 1'b0;
+end 
+// diachi[ 31 ]
+initial
+begin
+	diachi[31] = 1'b0;
+end 
+// diachi[ 30 ]
+initial
+begin
+	diachi[30] = 1'b0;
+end 
+// diachi[ 29 ]
+initial
+begin
+	diachi[29] = 1'b0;
+end 
+// diachi[ 28 ]
+initial
+begin
+	diachi[28] = 1'b0;
+end 
+// diachi[ 27 ]
+initial
+begin
+	diachi[27] = 1'b0;
+end 
+// diachi[ 26 ]
+initial
+begin
+	diachi[26] = 1'b0;
+end 
+// diachi[ 25 ]
+initial
+begin
+	diachi[25] = 1'b0;
+end 
+// diachi[ 24 ]
+initial
+begin
+	diachi[24] = 1'b0;
+end 
+// diachi[ 23 ]
+initial
+begin
+	diachi[23] = 1'b0;
+end 
+// diachi[ 22 ]
+initial
+begin
+	diachi[22] = 1'b0;
+end 
+// diachi[ 21 ]
+initial
+begin
+	diachi[21] = 1'b0;
+end 
+// diachi[ 20 ]
+initial
+begin
+	diachi[20] = 1'b0;
+end 
+// diachi[ 19 ]
+initial
+begin
+	diachi[19] = 1'b0;
+end 
+// diachi[ 18 ]
+initial
+begin
+	diachi[18] = 1'b0;
+end 
+// diachi[ 17 ]
+initial
+begin
+	diachi[17] = 1'b0;
+end 
+// diachi[ 16 ]
+initial
+begin
+	diachi[16] = 1'b0;
+end 
+// diachi[ 15 ]
+initial
+begin
+	diachi[15] = 1'b0;
+end 
+// diachi[ 14 ]
+initial
+begin
+	diachi[14] = 1'b0;
+end 
+// diachi[ 13 ]
+initial
+begin
+	diachi[13] = 1'b0;
+end 
+// diachi[ 12 ]
+initial
+begin
+	diachi[12] = 1'b0;
+end 
+// diachi[ 11 ]
+initial
+begin
+	diachi[11] = 1'b0;
+end 
+// diachi[ 10 ]
+initial
+begin
+	diachi[10] = 1'b0;
+end 
+// diachi[ 9 ]
+initial
+begin
+	diachi[9] = 1'b0;
+end 
+// diachi[ 8 ]
+initial
+begin
+	diachi[8] = 1'b0;
+end 
+// diachi[ 7 ]
+initial
+begin
+	diachi[7] = 1'b0;
+end 
+// diachi[ 6 ]
+initial
+begin
+	diachi[6] = 1'b0;
+end 
+// diachi[ 5 ]
+initial
+begin
+	diachi[5] = 1'b0;
+end 
+// diachi[ 4 ]
+initial
+begin
+	diachi[4] = 1'b0;
+end 
+// diachi[ 3 ]
+initial
+begin
+	diachi[3] = 1'b0;
+end 
+// diachi[ 2 ]
+initial
+begin
+	diachi[2] = 1'b0;
+end 
+// diachi[ 1 ]
+initial
+begin
+	diachi[1] = 1'b0;
+end 
+// diachi[ 0 ]
+initial
+begin
+	diachi[0] = 1'b0;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+endmodule
+

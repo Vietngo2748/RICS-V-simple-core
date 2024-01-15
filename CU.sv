@@ -1,0 +1,93 @@
+module CU(
+  input logic [6:0] opcode,
+  input logic stall,
+  
+  output logic branch,
+  output logic memread,
+  output logic memtoreg,
+  output logic memwrite,
+  output logic aluSrc,
+  output logic regwrite,
+  output logic [1:0] Aluop
+);
+
+  always_comb begin
+    case (opcode)
+      7'b0000011: //ld
+        begin
+          aluSrc = 1'b1;
+          memtoreg = 1'b1;
+          regwrite = 1'b1;
+          memread = 1'b1;
+          memwrite = 1'b0;
+          branch = 1'b0;
+          Aluop = 2'b00;
+        end
+
+      7'b0100011: //sd
+        begin
+          aluSrc = 1'b1;
+          memtoreg = 1'bx;
+          regwrite = 1'b0;
+          memread = 1'b0;
+          memwrite = 1'b1;
+          branch = 1'b0;
+          Aluop = 2'b00;
+        end
+
+      7'b0110011: //R-format
+        begin
+          aluSrc = 1'b0;
+          memtoreg = 1'b0;
+          regwrite = 1'b1;
+          memread = 1'b0;
+          memwrite = 1'b0;
+          branch = 1'b0;
+          Aluop = 2'b10;
+        end
+
+      7'b1100011:  //beq
+        begin
+          aluSrc = 1'b0;
+          memtoreg = 1'bx;
+          regwrite = 1'b0;
+          memread = 1'b0;
+          memwrite = 1'b0;
+          branch = 1'b1;
+          Aluop = 2'b01;
+        end
+
+      7'b0010011:
+        begin
+          aluSrc = 1'b1;
+          memtoreg = 1'b0;
+          regwrite = 1'b1;
+          memread = 1'b0;
+          memwrite = 1'b0;
+          branch = 1'b0;
+          Aluop = 2'b00;
+        end
+
+      default:
+        begin
+          aluSrc = 1'b0;
+          memtoreg = 1'b0;
+          regwrite = 1'b0;
+          memread = 1'b0;
+          memwrite = 1'b0;
+          branch = 1'b0;
+          Aluop = 2'b00;
+        end
+    endcase
+
+    if (stall == 1'b1) begin
+      aluSrc = 1'b0;
+      memtoreg = 1'b0;
+      regwrite = 1'b0;
+      memread = 1'b0;
+      memwrite = 1'b0;
+      branch = 1'b0;
+      Aluop = 2'b00;
+    end
+  end
+endmodule
