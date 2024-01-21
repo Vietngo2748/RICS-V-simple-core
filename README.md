@@ -11,3 +11,5 @@ This is a verilog code for a 5-stage pipelined RISC-V Processor with forwarding,
 ### Instructions
 For simulation purposes, open a new waveform and load cpu.sv files. In the tab for cpu.sv, add all other sv files in the repository and explaination instruction in ins_file
 
+#### Test waveform
+
