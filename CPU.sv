@@ -1,9 +1,10 @@
 module CPU(
 	input logic clk,
 	input logic reset,
-	output logic [63:0] diachi,
+	output logic checkflush,
+	output logic [63:0] diachi, element1, element2, element3, element4,element5, element6, element7, element8,
    output logic [31:0] lenh,
-	output logic [63:0] reg8, reg18, reg19, reg20, reg21, reg22
+	output logic [63:0] reg8, reg18, reg19, reg20, reg26, reg27,reg11,reg29,reg0, reg5
 );
 
  //PC wires
@@ -33,7 +34,7 @@ module CPU(
   //regfile
   logic regwrite_memwb_out;
   logic [63:0] readdata1, readdata2;
-  logic [63:0] r8, r19, r20, r21, r22;
+  logic [63:0] r8, r18, r19, r20, r26, r27,r0,r11,r29,r5;
   logic [63:0] write_data;
   
   // CU wires
@@ -100,7 +101,7 @@ module CPU(
   
   pipeline_flush p_flush
   (
-    .branch(branch_final & BRANCH),
+    .branch(addermuxselect & branch),
     .flush(flush)
   );
   
@@ -137,7 +138,7 @@ module CPU(
   
   twox1Mux mux2
   (
-    .A(adderout1),.B(exmem_out_adder),.SEL(BRANCH & branch_final),.Y(pc_in) // ??
+    .A(adderout1),.B(adderout2),.SEL(branch & addermuxselect),.Y(pc_in) // ??
   );
   
   IFID i1 
@@ -185,8 +186,12 @@ module CPU(
 	 .r18(r18),
     .r19(r19),
     .r20(r20),
-    .r21(r21),
-    .r22(r22)
+    .r26(r26),
+    .r27(r27),
+	 .r0(r0),
+	 .r11(r11),
+	 .r29(r29),
+	 .r5(r5)
   );
   
   CU cu
@@ -205,7 +210,7 @@ module CPU(
   IDEX i2
   (
     .clk(clk),
-    .flush(flush),
+    //.flush(flush),
     .reset(reset),
     .funct4_in({inst_ifid_out[30],inst_ifid_out[14:12]}),
     .A_in(random),
@@ -222,8 +227,8 @@ module CPU(
   
   adder adder2
   (
-    .p(a1),
-    .q(d << 1),
+    .p(random),
+    .q(imm_data << 1),
     .out(adderout2)
   );
   
@@ -260,7 +265,7 @@ module CPU(
   
    EXMEM i3
   (
-    .clk(clk),.reset(reset),.Adder_out(adderout2),.Result_in_alu(AluResult),.Zero_in(zero),.flush(flush),
+    .clk(clk),.reset(reset),.Adder_out(adderout2),.Result_in_alu(AluResult),.Zero_in(zero),//.flush(flush),
     .writedata_in(threeby1_out2),.Rd_in(RD), .addermuxselect_in(addermuxselect),
     .branch_in(Branch),.memread_in(Memread),.memtoreg_in(Memtoreg),.memwrite_in(Memwrite),.regwrite_in(Regwrite),
     .Adderout( exmem_out_adder),.zero(exmem_out_zero),.result_out_alu(exmem_out_result),.writedata_out(write_Data),
@@ -301,7 +306,7 @@ module CPU(
   
    branching_unit branc
   (
-    .funct3(funct4_out[2:0]),.readData1(M1),.b(alu_64_b),.addermuxselect(addermuxselect)
+    .funct3(inst_ifid_out[14:12]),.readData1(readdata1),.b(readdata2),.addermuxselect(addermuxselect)
   );
   
   ForwardingUnit f1
@@ -316,11 +321,16 @@ module CPU(
   assign reg18 = r18;
   assign reg19 = r19;
   assign reg20 = r20;
-  assign reg21 = r21;
-  assign reg22 = r22;
+  assign reg26 = r26;
+  assign reg27 = r27;
+  assign reg0 = r0;
+  assign reg11 = r11;
+  assign reg29 = r29;
+  assign reg5 = r5;
   
   assign diachi = pc_out;
   assign lenh = instruction;
+  assign checkflush = flush;
  endmodule 
  
  
