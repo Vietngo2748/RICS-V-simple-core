@@ -1,8 +1,9 @@
 # RISC-V Pipelined Processor
 
 This is a verilog code for a 5-stage pipelined RISC-V Processor with forwarding, stalling, and flushing functionality. Here is the circuit diagramme of the processor.
+![image](https://github.com/Vietngo2748/RICS-V-simple-core/assets/150679207/1e16e7b1-22d5-4f4f-b5b2-e9deb160a641)
 
-![image](https://user-images.githubusercontent.com/56905673/117547053-f932fe00-b046-11eb-91af-9291291d4f52.png)
+
 
 ## RISC-V Assembly Language. 
 ![Ảnh1](https://github.com/Vietngo2748/RICS-V-simple-core/assets/150679207/2428d09b-d6a1-4c81-962b-0c6e0980929a)
