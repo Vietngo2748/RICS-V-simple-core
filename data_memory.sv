@@ -3,6 +3,8 @@ module data_memory
   (input logic [DATA_WIDTH-1:0] write_data,
    input logic [ADDRESS_WIDTH-1:0] address,
    input logic memorywrite, clk, memoryread,
+	input logic [1:0] select,
+	output logic unalign,
    output logic [DATA_WIDTH-1:0] read_data,
    output logic [DATA_WIDTH-1:0] element1,
    output logic [DATA_WIDTH-1:0] element2,
@@ -14,13 +16,14 @@ module data_memory
    output logic [DATA_WIDTH-1:0] element8);
   
   logic [7:0] mem [2**ADDRESS_WIDTH - 1:0]; // memory array
+  logic unalign_internal_rd,unalign_internal_wr;
+  assign unalign = unalign_internal_rd || unalign_internal_wr ;a
   integer i;
   
   initial begin
     for (i=0; i<2**ADDRESS_WIDTH; i=i+1) begin
       mem[i] = 0;
     end
-    
     mem[0] = 8'd1;
     mem[8] = 8'd2;
     mem[16] = 8'd3;
@@ -41,28 +44,90 @@ module data_memory
   assign element8 = {mem[63], mem[62], mem[61], mem[60], mem[59], mem[58], mem[57], mem[56]};
   
   always @(*) begin
+  unalign_internal_rd = 1'b0;
     if (memoryread) begin
-      read_data[7:0] = mem[address+0];
-      read_data[15:8] = mem[address+1];
-      read_data[23:16] = mem[address+2];
-      read_data[31:24] = mem[address+3];
-      read_data[39:32] = mem[address+4];
-      read_data[47:40] = mem[address+5];
-      read_data[55:48] = mem[address+6];
-      read_data[63:56] = mem[address+7];
+		case(select)
+			2'b00: begin // byte
+					read_data[7:0] = mem[address+0];
+					read_data[63:8] = 0;
+				end
+			2'b01: begin //half word
+             if ((address[1:0] % 2) == 0) begin
+					read_data[7:0] = mem[address+0];
+					read_data[15:8] = mem[address+1];
+					read_data[63:16] = 0;
+				end
+				else
+					unalign_internal_rd = 1'b1;
+			end
+			2'b10: begin //word
+				if ((address[1:0] % 4) == 0) begin
+					read_data[7:0] = mem[address+0];
+					read_data[15:8] = mem[address+1];
+					read_data[23:16] = mem[address+2];
+					read_data[31:24] = mem[address+3];
+					read_data[63:32] = 0;
+				end
+				else
+					unalign_internal_rd = 1'b1;
+			end
+			2'b11: begin //double word
+				if ((address[1:0] % 8) == 0) begin
+					read_data[7:0] = mem[address+0];
+					read_data[15:8] = mem[address+1];
+					read_data[23:16] = mem[address+2];
+					read_data[31:24] = mem[address+3];
+					read_data[39:32] = mem[address+4];
+					read_data[47:40] = mem[address+5];
+					read_data[55:48] = mem[address+6];
+					read_data[63:56] = mem[address+7];
+				end
+				else
+					unalign_internal_rd = 1'b1;
+			end
+		endcase
     end
   end
   
   always_ff @(posedge clk) begin
+  unalign_internal_wr <= 1'b0;
     if (memorywrite) begin
-      mem[address] = write_data[7:0];
-      mem[address+1] = write_data[15:8];
-      mem[address+2] = write_data[23:16];
-      mem[address+3] = write_data[31:24];
-      mem[address+4] = write_data[39:32];
-      mem[address+5] = write_data[47:40];
-      mem[address+6] = write_data[55:48];
-      mem[address+7] = write_data[63:56];
+		case(select)
+			2'b00: mem[address] <= write_data[7:0]; //byte
+         2'b01: begin //half word
+				if ((address[1:0] % 2) == 0) begin 
+					mem[address] <= write_data[7:0];
+					mem[address+1] <= write_data[15:8];
+				end
+				else 
+					unalign_internal_wr <= 1'b1;
+					
+			end
+			2'b10: begin	// word
+				if ((address[1:0] % 4) == 0) begin
+					mem[address] <= write_data[7:0];
+					mem[address+1] <= write_data[15:8];
+					mem[address+2] <= write_data[23:16];
+					mem[address+3] <= write_data[31:24];
+				end
+				else
+					unalign_internal_wr <= 1'b1;
+			end
+			2'b11: begin	// double
+				if ((address[1:0] % 8) == 0) begin
+					mem[address] = write_data[7:0];
+					mem[address+1] = write_data[15:8];
+					mem[address+2] = write_data[23:16];
+					mem[address+3] = write_data[31:24];
+					mem[address+4] = write_data[39:32];
+					mem[address+5] = write_data[47:40];
+					mem[address+6] = write_data[55:48];
+					mem[address+7] = write_data[63:56];
+				end
+				else
+					unalign_internal_wr <= 1'b1;
+			end
+		endcase 
     end
   end
 endmodule
